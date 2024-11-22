@@ -1,0 +1,35 @@
+{
+  "name": "abm_fnc",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.60.5",
+    "@trpc/client": "^11.0.0-rc.638",
+    "@trpc/next": "^11.0.0-rc.638",
+    "@trpc/react-query": "^11.0.0-rc.638",
+    "@trpc/server": "^11.0.0-rc.638",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.8.1",
+    "next": "^15.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "superjson": "^2.2.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

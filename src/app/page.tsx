@@ -77,7 +77,7 @@ const Page = () => {
               </p>
             </div>
           </div>
-          <div className="md:absolute gap-y-16 md:gap-y-0 md:bottom-[-180] md:left-1/2 md:-translate-x-1/2 flex-col flex md:flex-row justify-between items-center mx-auto w-full max-w-1000">
+          <div className="md:absolute gap-y-16 md:gap-y-0 md:bottom-[-180px] md:left-1/2 md:-translate-x-1/2 flex-col flex md:flex-row justify-between items-center mx-auto w-full max-w-1000">
             <SectionCard
               imgPath="/icons/restaurants.png"
               title={`Affordable\nLuxury`}

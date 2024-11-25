@@ -2,7 +2,7 @@ import type { Config } from 'tailwindcss';
 
 const spacing = (): Record<number, string> => {
   const baseFontSize = 16; // 1rem = 16px
-  const maxValueInPx = 800; // Maximum value in pixels
+  const maxValueInPx = 1200; // Maximum value in pixels
   const remValues: Record<number, string> = {};
 
   const maxRemValue = maxValueInPx / baseFontSize;
@@ -30,7 +30,12 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         primary: '#E4C6AB',
-        bg: '#3d3d3d',
+        secondary: '#A5886D',
+        bg: '#303030',
+        cardBg: '#353030',
+        darkBg: '#181818',
+        footerBg: '#1e1e1e',
+        inputBg: '#9C9C9C',
       },
     },
   },

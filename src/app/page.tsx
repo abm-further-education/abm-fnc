@@ -1,35 +1,149 @@
-import { serverClient } from '@/trpc-client/server-client';
 import Image from 'next/image';
+import { montserrat, tinos } from './layout';
+import ImageTextSection from '@/components/view/ImageTextSection';
+import FadeIn from '@/components/common/FadeIn';
+import { cn } from '@/utils/utils';
+import Button from '@/components/common/Button';
+import Gallery from '@/components/view/Gallery';
+import { Metadata } from 'next';
+import Testimonial from '@/components/view/Testimonial';
+import Contact from '@/components/view/Contact';
+import Banner from '@/components/common/Banner';
 
-const Page = async () => {
-  const user = await serverClient.getUser();
+export const metadata: Metadata = {
+  title: 'ABM Further Education',
+  description:
+    'ABM Further Education provides accredited business, hospitality, and management courses to help students succeed in various industries.',
+};
 
-  console.log(user);
-
+const Page = () => {
   return (
     <div>
-      <div className="bg-neutral-900/20 w-full h-700 absolute z-10" />
-      <div className="w-full h-700 relative">
-        <Image
-          src="/home/banner_1.png"
-          alt="banner_image"
-          fill
-          objectFit="center"
+      <Banner
+        imgPath="/home/banner_1.png"
+        title="ABM Functions and Catering"
+        content="Where Passion Meets Culinary Perfection An Unforgettable Experience"
+        dimmed={
+          <div className="bg-neutral-900/20 w-full h-700 absolute z-10" />
+        }
+      />
+      <FadeIn>
+        <ImageTextSection
+          order="left"
+          imgPath="/home/catering_1.jpg"
+          title="Catering Services"
+          content="ABM Functions and Catering specialises in providing a delectable
+            array of culinary experiences for a variety of events. Our skilled
+            chefs craft menus that blend creativity and taste, catering to
+            diverse palates and dietary preferences. From elegant canapés to
+            hearty buffet spreads, our catering services add a touch of culinary
+            magic to your events."
         />
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <h1 className="text-primary text-2xl pb-50">
-            ABM Functions and Catering
-          </h1>
-          <p className="text-white pb-90">
-            Where Passion Meets Culinary Perfection An Unforgettable Experience
-          </p>
-          <button className="border border-primary text-primary px-16 py-10">
-            Contact Us
-          </button>
-        </div>
-      </div>
+      </FadeIn>
+      <FadeIn>
+        <ImageTextSection
+          order="right"
+          imgPath="/home/catering_2.jpg"
+          title="ABM Kitchen Hosted Functions"
+          content="Our unique offering includes hosting events within the state-of-the-art ABM Kitchen facilities. Clients can choose to organise interactive cooking workshops, food tasting sessions, or intimate chef's table dinners, all set in the professional environment of our kitchen. This immersive experience offers an inside look at culinary artistry."
+        />
+      </FadeIn>
+      <FadeIn>
+        <ImageTextSection
+          order="left"
+          imgPath="/home/student_led.jpg"
+          title="Student-Led Services"
+          content="One of our distinctive features is the involvement of ABM Further Education students in various capacities. Under the guidance of industry experts, students actively participate in the planning, preparation, and execution of events. From menu design to decor setup, students gain hands-on experience, fostering their growth as future professionals."
+        />
+      </FadeIn>
+
+      <FadeIn>
+        <section className="relative">
+          <div className="w-full h-400 relative mt-120">
+            <Image
+              src="/home/unlocking_bg.png"
+              alt={`unlocking_image`}
+              fill
+              objectFit="cover"
+              objectPosition="center"
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
+              <h1 className={`${tinos.className} text-primary text-4xl pb-50`}>
+                Unlocking Excellence
+              </h1>
+              <p className={`${montserrat.className} text-white pb-90`}>
+                Our key features
+              </p>
+            </div>
+          </div>
+          <div className="md:absolute gap-y-16 md:gap-y-0 md:bottom-[-180] md:left-1/2 md:-translate-x-1/2 flex-col flex md:flex-row justify-between items-center mx-auto w-full max-w-1000">
+            <SectionCard
+              imgPath="/icons/restaurants.png"
+              title={`Affordable\nLuxury`}
+              content="Exceptional events should be accessible to all."
+            />
+            <SectionCard
+              imgPath="/icons/badge.png"
+              title={`Guided\nby Professionals`}
+              content="Our expert chefs ensure flawless execution and top quality."
+            />
+            <SectionCard
+              imgPath="/icons/service.png"
+              title={`Innovation\nand Customisation`}
+              content="Clients gain fresh ideas from students' innovative contributions."
+            />
+          </div>
+        </section>
+      </FadeIn>
+      <ImageTextSection
+        order="left"
+        imgPath="/home/our_menu.png"
+        title="Our Menu"
+        className="mt-290"
+        haveButton={<Button className="mt-40">View Menu</Button>}
+        content={`Are you planning a special event or gathering?\nLook no further!\n\nABM Functions and Catering is here to make your event a memorable one. As an affiliate of ABM Further Education, we take pride in providing exceptional service while also nurturing the talents and skills of our students.`}
+      />
+      <section className="mt-120">
+        <h2
+          className={cn(tinos.className, 'text-primary text-2xl text-center')}
+        >
+          Gallery
+        </h2>
+        <Gallery />
+      </section>
+      <FadeIn>
+        <Contact />
+      </FadeIn>
+      <Testimonial />
     </div>
   );
 };
 
 export default Page;
+
+export const SectionCard = ({
+  imgPath,
+  title,
+  content,
+}: {
+  imgPath: string;
+  title: string;
+  content: string;
+}) => {
+  return (
+    <div className="w-300 h-300 bg-cardBg flex items-center justify-center flex-col shadow-xl">
+      <Image src={imgPath} alt={`unlocking_image`} width={80} height={80} />
+      <h3
+        className={cn(
+          tinos.className,
+          'text-primary text-2xl mt-20 whitespace-pre-wrap text-center'
+        )}
+      >
+        {title}
+      </h3>
+      <p className="text-white max-w-200 text-center mt-16 text-sm">
+        {content}
+      </p>
+    </div>
+  );
+};

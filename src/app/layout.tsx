@@ -1,25 +1,25 @@
-import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import './globals.css';
 import { Provider } from '@/lib/reactQuery-provider';
-import Layout from '@/components/Layout';
+import Layout from '@/components/common/Layout';
+import './globals.css';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
+export const inter = localFont({
+  src: './fonts/Inter-VariableFont_opsz,wght.ttf',
+  variable: '--font-inter',
   weight: '100 900',
 });
 
-export const metadata: Metadata = {
-  title: 'ABM Further Education',
-  description:
-    'ABM Further Education provides accredited business, hospitality, and management courses to help students succeed in various industries.',
-};
+export const tinos = localFont({
+  src: './fonts/Tinos-Regular.ttf',
+  variable: '--font-tinos',
+  weight: '100 900',
+});
+
+export const montserrat = localFont({
+  src: './fonts/Montserrat-VariableFont_wght.ttf',
+  variable: '--font-montserrat',
+  weight: '100 900',
+});
 
 export default function RootLayout({
   children,
@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased bg-bg`}>
+      <body className={`${inter.className} antialiased bg-bg`}>
         <Provider>
           <Layout>{children}</Layout>
         </Provider>

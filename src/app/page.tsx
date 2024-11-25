@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { montserrat, tinos } from './layout';
 import ImageTextSection from '@/components/view/ImageTextSection';
 import FadeIn from '@/components/common/FadeIn';
@@ -9,6 +8,8 @@ import { Metadata } from 'next';
 import Testimonial from '@/components/view/Testimonial';
 import Contact from '@/components/view/Contact';
 import Banner from '@/components/common/Banner';
+import Image from 'next/image';
+import { SectionCard } from '@/components/view/SectionCard';
 
 export const metadata: Metadata = {
   title: 'ABM Further Education',
@@ -120,30 +121,3 @@ const Page = () => {
 };
 
 export default Page;
-
-export const SectionCard = ({
-  imgPath,
-  title,
-  content,
-}: {
-  imgPath: string;
-  title: string;
-  content: string;
-}) => {
-  return (
-    <div className="w-300 h-300 bg-cardBg flex items-center justify-center flex-col shadow-xl">
-      <Image src={imgPath} alt={`unlocking_image`} width={80} height={80} />
-      <h3
-        className={cn(
-          tinos.className,
-          'text-primary text-2xl mt-20 whitespace-pre-wrap text-center'
-        )}
-      >
-        {title}
-      </h3>
-      <p className="text-white max-w-200 text-center mt-16 text-sm">
-        {content}
-      </p>
-    </div>
-  );
-};

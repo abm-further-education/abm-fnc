@@ -10,7 +10,7 @@ function Contact() {
       <h2
         className={cn(tinos.className, 'text-4xl text-center text-secondary')}
       >
-        Let's get in touch
+        Let&apos;s get in touch
       </h2>
       <Divider />
       <form className="flex flex-col max-w-500 gap-15 mx-auto mt-20">

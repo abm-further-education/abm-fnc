@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Masonry from 'react-masonry-css';
 import { Lightbox } from 'react-modal-image';
+import Image from 'next/image';
 
 const Gallery = () => {
   const [open, setOpen] = useState(false);
@@ -28,7 +29,9 @@ const Gallery = () => {
       >
         {images.map((src, index) => (
           <div key={index} className="overflow-hidden shadow-md">
-            <img
+            <Image
+              width={500}
+              height={500}
               src={src}
               alt={`Image ${index}`}
               className="cursor-pointer object-cover w-full hover:scale-105 transition-transform duration-300"
@@ -43,7 +46,7 @@ const Gallery = () => {
             alt="Example Image"
             hideDownload={true}
             hideZoom={true}
-            onClose={() => setOpen(false)}
+            // onClose={() => setOpen(false)}
           />
         )}
       </Masonry>

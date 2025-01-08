@@ -3,7 +3,6 @@ import { inter, montserrat, tinos } from '@/app/layout';
 import Divider from '@/components/common/Divider';
 import React, { useState } from 'react';
 import MenuTab from './MenuTab';
-import Contact from '../Contact';
 
 function Menu() {
   const [selectedMenu, setSelectedMenu] = useState<

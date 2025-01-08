@@ -15,11 +15,7 @@ type ContactFormData = {
 };
 
 function Contact() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ContactFormData>();
+  const { register, handleSubmit } = useForm<ContactFormData>();
   const sendEmailMutation = trpc.contact.sendEmail.useMutation();
 
   const onSubmit: SubmitHandler<ContactFormData> = async (data) => {

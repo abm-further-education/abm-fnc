@@ -25,6 +25,7 @@ An Unforgettable Experience"
         dimmed={
           <div className="bg-neutral-900/40 w-full h-700 absolute z-10" />
         }
+        isNeedContactBtn
       />
       <FadeIn>
         <ImageTextSection

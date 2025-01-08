@@ -1,6 +1,6 @@
 // models/user-model.ts
 
-import mongoose, { Schema, Document, models, model } from 'mongoose';
+import { Schema, Document, models, model } from 'mongoose';
 
 export interface User {
   name: string;

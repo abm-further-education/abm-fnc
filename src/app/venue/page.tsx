@@ -12,6 +12,7 @@ function page() {
         title="Venues"
         content="Where Passion Meets Culinary Perfection
 An Unforgettable Experience"
+        isNeedContactBtn
       />
       <FadeIn>
         <ImageTextSection

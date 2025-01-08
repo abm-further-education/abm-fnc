@@ -17,7 +17,7 @@ export const SectionCard = ({
       <h3
         className={cn(
           tinos.className,
-          'text-primary text-2xl mt-20 whitespace-pre-wrap text-center'
+          'text-primary text-xl mt-20 whitespace-pre-wrap text-center'
         )}
       >
         {title}

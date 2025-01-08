@@ -1,16 +1,29 @@
 'use client';
 import React, { useState } from 'react';
 import Masonry from 'react-masonry-css';
-import { Lightbox } from 'react-modal-image';
 import Image from 'next/image';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const Gallery = () => {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
+  const [imageIndex, setImageIndex] = useState(0);
 
   const handleImageClick = (src: string) => {
     setSelectedImage(src);
     setOpen(true);
+  };
+
+  const handlePrev = () => {
+    setImageIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+    setSelectedImage(images[(imageIndex - 1 + images.length) % images.length]);
+  };
+
+  const handleNext = () => {
+    setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setSelectedImage(images[(imageIndex + 1) % images.length]);
   };
 
   const breakpointColumns = {
@@ -39,17 +52,36 @@ const Gallery = () => {
             />
           </div>
         ))}
-        {open && (
-          <Lightbox
-            small={selectedImage}
-            large={selectedImage}
-            alt="Example Image"
-            hideDownload={true}
-            hideZoom={true}
-            // onClose={() => setOpen(false)}
-          />
-        )}
       </Masonry>
+      {open && (
+        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black bg-opacity-75">
+          <button
+            onClick={() => setOpen(false)}
+            className="absolute top-12 right-12 text-white rounded-full"
+          >
+            <X />
+          </button>
+          <div className="relative">
+            <img
+              src={selectedImage}
+              alt="Selected"
+              className="max-w-full max-h-screen"
+            />
+          </div>
+          <button
+            onClick={handlePrev}
+            className="absolute top-1/2 left-2 transform -translate-y-1/2 p-2 text-white rounded-full"
+          >
+            <ChevronLeft />
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 p-2 text-white rounded-full"
+          >
+            <ChevronRight />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

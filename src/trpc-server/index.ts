@@ -1,5 +1,3 @@
-// trpc-server/index.ts
-
 import { initTRPC } from '@trpc/server';
 import superjson from 'superjson';
 

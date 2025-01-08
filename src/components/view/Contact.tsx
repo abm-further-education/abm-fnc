@@ -1,37 +1,74 @@
+'use client';
 import { tinos } from '@/app/layout';
 import { cn } from '@/utils/utils';
 import React from 'react';
 import Button from '../common/Button';
 import Divider from '../common/Divider';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { trpc } from '@/trpc-client/client';
+
+type ContactFormData = {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+};
 
 function Contact() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ContactFormData>();
+  const sendEmailMutation = trpc.contact.sendEmail.useMutation();
+
+  const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
+    if (!data.email) alert('Please enter your email address.');
+    else {
+      try {
+        await sendEmailMutation.mutateAsync(data);
+        alert('Email sent successfully!');
+      } catch (error) {
+        console.error('Failed to send email:', error);
+        alert('Failed to send email. Please try again.');
+      }
+    }
+  };
+
   return (
-    <section className="my-120">
+    <section className="my-120 px-16 md:px-0">
       <h2
         className={cn(tinos.className, 'text-4xl text-center text-secondary')}
       >
         Let&apos;s get in touch
       </h2>
       <Divider />
-      <form className="flex flex-col max-w-500 gap-15 mx-auto mt-20">
+      <form
+        className="flex flex-col max-w-500 gap-15 mx-auto mt-20 text-white"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <input
           type="text"
           placeholder="Name"
-          className="rounded-sm bg-inputBg/30 placeholder:text-bg placeholder:text-sm p-6"
+          {...register('name')}
+          className="rounded-sm bg-inputBg/30 placeholder:text-black placeholder:text-sm p-6"
         />
         <input
           type="text"
           placeholder="Email"
-          className="rounded-sm bg-inputBg/30 placeholder:text-bg placeholder:text-sm p-6"
+          {...register('email')}
+          className="rounded-sm bg-inputBg/30 placeholder:text-black placeholder:text-sm p-6"
         />
         <input
           type="text"
           placeholder="Phone"
-          className="rounded-sm bg-inputBg/30 placeholder:text-bg placeholder:text-sm p-6"
+          {...register('phone')}
+          className="rounded-sm bg-inputBg/30 placeholder:text-black placeholder:text-sm p-6"
         />
         <textarea
           placeholder="Message"
-          className="rounded-sm bg-inputBg/30 placeholder:text-bg placeholder:text-sm p-6"
+          {...register('message')}
+          className="rounded-sm bg-inputBg/30 placeholder:text-black placeholder:text-sm p-6"
         />
         <Button className="mt-16" type="submit">
           Send a Message

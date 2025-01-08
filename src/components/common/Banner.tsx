@@ -12,14 +12,23 @@ type Props = {
 
 function Banner({ imgPath, title, content, dimmed }: Props) {
   return (
-    <div className="w-full h-700 relative">
+    <div className="w-full h-screen md:h-700 relative">
       {dimmed && dimmed}
-      <Image src={imgPath} alt="banner_image" fill objectFit="center" />
+      <Image
+        src={imgPath}
+        alt="banner_image"
+        fill
+        className="md:object-center object-cover"
+      />
       <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
-        <h1 className={`${tinos.className} text-primary text-4xl pb-50`}>
+        <h1
+          className={`${tinos.className} text-primary text-4xl pb-50 text-center shadow-lg`}
+        >
           {title}
         </h1>
-        <p className={`${montserrat.className} text-white pb-90`}>{content}</p>
+        <p className={`${montserrat.className} text-white pb-90 text-center`}>
+          {content}
+        </p>
         <Button>
           <span>Contact Us</span>
         </Button>

@@ -23,13 +23,13 @@ function ImageTextSection({
   return (
     <div
       className={cn(
-        'flex-col md:flex-row flex items-center justify-center mt-120 gap-40 max-w-1000 mx-auto',
+        'flex-col md:flex-row flex items-center justify-center mt-120 gap-40 max-w-1000 mx-auto px-16 md:px-0',
         className
       )}
     >
       <div
         className={cn(
-          order === 'left' ? 'order-1' : 'order-2',
+          order === 'left' ? 'md:order-1' : 'md:order-2',
           'w-400 h-400 relative'
         )}
       >

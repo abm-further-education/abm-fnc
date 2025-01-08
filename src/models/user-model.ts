@@ -1,6 +1,6 @@
 // models/user-model.ts
 
-import mongoose from 'mongoose';
+import mongoose, { Schema, Document, models, model } from 'mongoose';
 
 export interface User {
   name: string;
@@ -8,7 +8,7 @@ export interface User {
   password: string;
 }
 
-export interface MongoUser extends User, mongoose.Document {}
+export interface MongoUser extends User, Document {}
 
 export type TUser = User & {
   _id: string;
@@ -16,7 +16,7 @@ export type TUser = User & {
   updatedAt: string;
 };
 
-const UserSchema = new mongoose.Schema<User>({
+const UserSchema = new Schema<User>({
   name: {
     type: String,
     required: true,
@@ -31,4 +31,4 @@ const UserSchema = new mongoose.Schema<User>({
   },
 });
 
-export default mongoose.models.User || mongoose.model<User>('User', UserSchema);
+export const User = models.User || model<User>('User', UserSchema);

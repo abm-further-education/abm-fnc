@@ -5,7 +5,7 @@ import { cn } from '@/utils/utils';
 import Button from '@/components/common/Button';
 import Gallery from '@/components/view/Gallery';
 import { Metadata } from 'next';
-import Testimonial from '@/components/view/Testimonial';
+import Testimonial from '@/components/view/TestimonialContainer';
 import Contact from '@/components/view/Contact';
 import Banner from '@/components/common/Banner';
 import Image from 'next/image';
@@ -25,7 +25,7 @@ const Page = () => {
         title="ABM Functions and Catering"
         content="Where Passion Meets Culinary Perfection An Unforgettable Experience"
         dimmed={
-          <div className="bg-neutral-900/20 w-full h-700 absolute z-10" />
+          <div className="bg-neutral-900/20 w-full h-screen md:h-700 absolute z-10" />
         }
       />
       <FadeIn>
@@ -60,7 +60,7 @@ const Page = () => {
 
       <FadeIn>
         <section className="relative">
-          <div className="w-full h-400 relative mt-120">
+          <div className="w-full h-200 mb-20 md:mb-0 md:h-400 relative mt-120">
             <Image
               src="/home/unlocking_bg.png"
               alt={`unlocking_image`}
@@ -69,10 +69,10 @@ const Page = () => {
               objectPosition="center"
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
-              <h1 className={`${tinos.className} text-primary text-4xl pb-50`}>
+              <h1 className={`${tinos.className} text-primary text-3xl pb-50`}>
                 Unlocking Excellence
               </h1>
-              <p className={`${montserrat.className} text-white pb-90`}>
+              <p className={`${montserrat.className} text-white md:pb-70`}>
                 Our key features
               </p>
             </div>
@@ -100,7 +100,7 @@ const Page = () => {
         order="left"
         imgPath="/home/our_menu.png"
         title="Our Menu"
-        className="mt-290"
+        className="md:mt-290"
         haveButton={<Button className="mt-40">View Menu</Button>}
         content={`Are you planning a special event or gathering?\nLook no further!\n\nABM Functions and Catering is here to make your event a memorable one. As an affiliate of ABM Further Education, we take pride in providing exceptional service while also nurturing the talents and skills of our students.`}
       />

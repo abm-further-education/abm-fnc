@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { montserrat } from '@/app/layout';
 import { cn } from '@/utils/utils';
+import MobileNav from './MobileNav';
 
 function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,13 +29,13 @@ function Nav() {
           isScrolled
             ? 'translate-y-0 bg-darkBg shadow-md'
             : '-translate-y-full bg-transparent',
-          'fixed top-0 w-full h-80 transition-all z-[998] duration-500'
+          'fixed top-0 w-full h-80 transition-all z-[800] duration-500'
         )}
       />
       <header
         className={cn(
           montserrat.className,
-          `fixed top-0 z-[999] flex items-center justify-center gap-30 text-white py-16 w-full`
+          `hidden fixed top-0 z-[900] md:flex items-center justify-center gap-30 text-white py-16 w-full`
         )}
       >
         <Link
@@ -71,6 +72,7 @@ function Nav() {
           Contact
         </Link>
       </header>
+      <MobileNav />
     </>
   );
 }

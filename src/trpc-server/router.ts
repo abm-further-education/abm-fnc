@@ -2,8 +2,10 @@
 
 import { router, publicProcedure } from './index';
 import { z } from 'zod';
-import userModel, { TUser } from '@/models/user-model';
+import { User, TUser } from '@/models/user-model';
 import dbConnect from '@/db/mongoose';
+import { contactRouter } from './routers/contact';
+import { authRouter } from './routers/auth';
 
 export const appRouter = router({
   createUser: publicProcedure
@@ -21,7 +23,7 @@ export const appRouter = router({
     })
     .mutation(async (params) => {
       await dbConnect();
-      const user: TUser = await userModel.create({
+      const user: TUser = await User.create({
         ...params.input,
       });
 
@@ -32,7 +34,7 @@ export const appRouter = router({
 
   getUser: publicProcedure.query(async () => {
     await dbConnect();
-    const users: TUser[] = await userModel.aggregate([
+    const users: TUser[] = await User.aggregate([
       {
         $project: {
           name: 1,
@@ -45,6 +47,8 @@ export const appRouter = router({
     ]);
     return users;
   }),
+  contact: contactRouter,
+  auth: authRouter,
 });
 
 export type AppRouter = typeof appRouter;

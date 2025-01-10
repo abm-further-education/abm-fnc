@@ -27,6 +27,7 @@ const Page = () => {
         dimmed={
           <div className="bg-neutral-900/20 w-full h-screen md:h-700 absolute z-10" />
         }
+        isNeedContactBtn
       />
       <FadeIn>
         <ImageTextSection
@@ -106,7 +107,10 @@ const Page = () => {
       />
       <section className="mt-120">
         <h2
-          className={cn(tinos.className, 'text-primary text-2xl text-center')}
+          className={cn(
+            tinos.className,
+            'text-primary text-2xl text-center mb-30'
+          )}
         >
           Gallery
         </h2>

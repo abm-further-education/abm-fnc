@@ -23,7 +23,7 @@ function page() {
         content="Where Passion Meets Culinary Perfection
 An Unforgettable Experience"
         dimmed={
-          <div className="bg-neutral-900/40 w-full h-700 absolute z-10" />
+          <div className="bg-neutral-900/30 w-full h-700 absolute z-10" />
         }
         isNeedContactBtn
       />

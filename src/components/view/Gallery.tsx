@@ -89,12 +89,14 @@ const Gallery = () => {
 export default Gallery;
 
 const images = [
-  '/home/our_menu.png',
+  '/home/dreamyway_01.jpg',
   '/home/catering_1.jpg',
+  '/home/dreamyway_02.jpg',
   '/home/catering_2.jpg',
+  '/home/dreamyway_03.jpg',
   '/home/food_1.png',
   '/home/food_2.png',
-  '/home/food_3.png',
+  '/home/dreamyway_04.jpg',
   '/home/food_4.png',
-  '/home/food_5.jpg',
+  '/home/dreamyway_05.jpg',
 ];

@@ -1,8 +1,10 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import { montserrat, tinos } from '@/app/layout';
 import Button from './Button';
 import { cn } from '@/utils/utils';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   imgPath: string;
@@ -13,6 +15,7 @@ type Props = {
 };
 
 function Banner({ imgPath, title, content, dimmed, isNeedContactBtn }: Props) {
+  const router = useRouter();
   return (
     <div className="w-full h-screen md:h-700 relative">
       {dimmed && dimmed}
@@ -25,7 +28,7 @@ function Banner({ imgPath, title, content, dimmed, isNeedContactBtn }: Props) {
       <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
         <h1
           className={cn(
-            `${tinos.className} text-primary text-4xl text-center shadow-lg`,
+            `${tinos.className} text-primary text-4xl text-center drop-shadow-lg`,
             isNeedContactBtn ? 'pb-50' : 'pb-0'
           )}
         >
@@ -35,7 +38,11 @@ function Banner({ imgPath, title, content, dimmed, isNeedContactBtn }: Props) {
           {content}
         </p>
         {isNeedContactBtn && (
-          <Button>
+          <Button
+            onClick={() => {
+              router.push('/contact');
+            }}
+          >
             <span>Contact Us</span>
           </Button>
         )}

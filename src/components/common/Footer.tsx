@@ -11,10 +11,14 @@ function Footer() {
       <div className="px-60 bg-footerBg py-20">
         <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-0 justify-between text-white">
           <div className="w-300">
-            <span className="flex items-center gap-10 font-light">
+            <Link
+              className="flex items-center gap-10 font-light hover:underline"
+              href="https://maps.app.goo.gl/hzYRc24WA1g8UcZU8"
+              target="_blank"
+            >
               <MapPin className="text-secondary min-w-24" />
               Shop 22 61-79 Quay Street Haymarket NSW 2000
-            </span>
+            </Link>
           </div>
           <div className="w-300">
             <span className="flex items-center md:justify-center gap-10 font-light">
@@ -31,11 +35,31 @@ function Footer() {
         </div>
         <div className="flex items-center justify-between py-20 flex-col md:flex-row">
           <ul className="w-300 text-secondary flex items-center justify-center gap-16">
-            <li>Home</li>
-            <li>Catering</li>
-            <li>Venue</li>
-            <li>About</li>
-            <li>Contact</li>
+            <li className="hover:underline">
+              <Link href="/" className="">
+                Home
+              </Link>
+            </li>
+            <li className="hover:underline">
+              <Link href="/catering" className="">
+                Catering
+              </Link>
+            </li>
+            <li className="hover:underline">
+              <Link href="/venue" className="">
+                Venue
+              </Link>
+            </li>
+            <li className="hover:underline">
+              <Link href="/about" className="">
+                About
+              </Link>
+            </li>
+            <li className="hover:underline">
+              <Link href="/contact" className="">
+                Contact
+              </Link>
+            </li>
           </ul>
           <div>
             <Link href="/" className="">
@@ -49,7 +73,7 @@ function Footer() {
             </Link>
           </div>
           <div className="flex w-300 items-end justify-center mt-20 md:mt-0 md:justify-end">
-            <Link href="/" className="">
+            <Link href="https://www.facebook.com/abmsydney/" target="_blank">
               <Image
                 src="/icons/fa_facebook.svg"
                 alt="Logo"
@@ -58,7 +82,7 @@ function Footer() {
                 className="mx-20"
               />
             </Link>
-            <Link href="/" className="">
+            <Link href="https://www.instagram.com/abmsydney/" target="_blank">
               <Image
                 src="/icons/bi_instagram.svg"
                 alt="Logo"
@@ -67,9 +91,18 @@ function Footer() {
                 className="mx-20"
               />
             </Link>
-            <Link href="/" className="">
+            <Link href="https://www.youtube.com/@ABMsydney" target="_blank">
               <Image
                 src="/icons/bi_youtube.svg"
+                alt="Logo"
+                width={20}
+                height={20}
+                className="mx-20"
+              />
+            </Link>
+            <Link href="https://www.tiktok.com/@abmsydney" target="_blank">
+              <Image
+                src="/icons/tik-tok.png"
                 alt="Logo"
                 width={20}
                 height={20}

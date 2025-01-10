@@ -14,7 +14,7 @@ type ContactFormData = {
   message: string;
 };
 
-function Contact() {
+function Contact({ isFromSteps }: { isFromSteps?: boolean }) {
   const { register, handleSubmit } = useForm<ContactFormData>();
   const sendEmailMutation = trpc.contact.sendEmail.useMutation();
 
@@ -32,13 +32,20 @@ function Contact() {
   };
 
   return (
-    <section className="my-120 px-16 md:px-0">
-      <h2
-        className={cn(tinos.className, 'text-4xl text-center text-secondary')}
-      >
-        Let&apos;s get in touch
-      </h2>
-      <Divider />
+    <section className={cn('px-16 md:px-0', isFromSteps ? 'my-30' : 'my-120')}>
+      {!isFromSteps && (
+        <>
+          <h2
+            className={cn(
+              tinos.className,
+              'text-4xl text-center text-secondary'
+            )}
+          >
+            Let&apos;s get in touch
+          </h2>
+          <Divider />
+        </>
+      )}
       <form
         className="flex flex-col max-w-500 gap-15 mx-auto mt-20 text-white"
         onSubmit={handleSubmit(onSubmit)}

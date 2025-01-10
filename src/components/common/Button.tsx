@@ -4,13 +4,17 @@ import React from 'react';
 
 type Props = {
   children: React.ReactNode;
+  id?: string;
   className?: string;
   type?: 'button' | 'submit' | 'reset' | undefined;
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
-function Button({ children, className, type = 'button' }: Props) {
+function Button({ children, id, className, type = 'button', onClick }: Props) {
   return (
     <button
+      id={id}
+      onClick={onClick}
       type={type}
       className={cn(
         tinos.className,

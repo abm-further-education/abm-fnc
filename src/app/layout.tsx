@@ -2,6 +2,7 @@ import localFont from 'next/font/local';
 import { Provider } from '@/lib/reactQuery-provider';
 import Layout from '@/components/common/Layout';
 import './globals.css';
+import TopButton from '@/components/common/TopButton';
 
 export const inter = localFont({
   src: './fonts/Inter-VariableFont_opsz,wght.ttf',
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased bg-bg`}>
         <Provider>
           <Layout>{children}</Layout>
+          <TopButton />
         </Provider>
       </body>
     </html>

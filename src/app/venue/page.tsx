@@ -10,8 +10,10 @@ import React, { useState } from 'react';
 
 function Page() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [_eventType, setEventType] = useState('');
+  const [eventType, setEventType] = useState('');
   const [numbers, setNumbers] = useState('');
+
+  console.log(eventType);
 
   return (
     <div>

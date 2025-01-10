@@ -41,8 +41,8 @@ function FormSteps({
           <Button
             id="Standing"
             className="w-160"
-            onClick={(e) => {
-              setEventType(e.target.id);
+            onClick={(e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              setEventType((e?.target as HTMLButtonElement).id);
               setCurrentStep(2);
             }}
           >
@@ -51,8 +51,8 @@ function FormSteps({
           <Button
             id="Seated Dining"
             className="w-160"
-            onClick={(e) => {
-              setEventType(e.target.id);
+            onClick={(e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              setEventType((e?.target as HTMLButtonElement).id);
               setCurrentStep(2);
             }}
           >

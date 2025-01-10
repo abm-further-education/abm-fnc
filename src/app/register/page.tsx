@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { trpc } from '@/trpc-client/client';
 import { useRouter } from 'next/navigation';
 
-function page() {
+function Page() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -55,4 +55,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

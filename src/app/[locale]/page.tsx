@@ -10,6 +10,7 @@ import Contact from '@/components/view/Contact';
 import Banner from '@/components/common/Banner';
 import Image from 'next/image';
 import { SectionCard } from '@/components/view/SectionCard';
+import { useTranslations } from 'next-intl';
 
 export const metadata: Metadata = {
   title: 'ABM Further Education',
@@ -18,12 +19,14 @@ export const metadata: Metadata = {
 };
 
 const Page = () => {
+  const t = useTranslations('HomePage');
+
   return (
     <div>
       <Banner
         imgPath="/home/banner_1.png"
         title="ABM Functions and Catering"
-        content="Where Passion Meets Culinary Perfection An Unforgettable Experience"
+        content={t('bannerContent')}
         dimmed={
           <div className="bg-neutral-900/20 w-full h-screen md:h-700 absolute z-10" />
         }

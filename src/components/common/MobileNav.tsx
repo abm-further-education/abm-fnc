@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { montserrat } from '@/app/layout';
+import { montserrat } from '@/app/[locale]/layout';
 import { cn } from '@/utils/utils';
 import { AlignJustify, X } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import LanguageSwitcher from './LanguageSwitcher';
 
 function MobileNav() {
+  const params = useParams();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -59,7 +62,7 @@ function MobileNav() {
       <AlignJustify onClick={toggleMenu} />
 
       <div
-        className={`fixed top-0 z-40 right-0 h-full w-full p-40  shadow-lg transform transition-transform duration-300 ${
+        className={`fixed top-0 z-[999] right-0 h-full w-full p-40  shadow-lg transform transition-transform duration-300 ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -74,27 +77,55 @@ function MobileNav() {
         <nav className="mt-4">
           <ul className="space-y-20 text-2xl">
             <li>
-              <a href="#" className="block p-3 hover:underline">
+              <Link
+                onClick={toggleMenu}
+                href="/"
+                className="block p-3 hover:underline"
+              >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="block p-3 hover:underline">
+              <Link
+                onClick={toggleMenu}
+                href={`/${params.locale}/catering`}
+                className="block p-3 hover:underline"
+              >
+                Catering
+              </Link>
+            </li>
+            <li>
+              <Link
+                onClick={toggleMenu}
+                href={`/${params.locale}/venue`}
+                className="block p-3 hover:underline"
+              >
+                Venue
+              </Link>
+            </li>
+            <li>
+              <Link
+                onClick={toggleMenu}
+                href={`/${params.locale}/about`}
+                className="block p-3 hover:underline"
+              >
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="block p-3 hover:underline">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#" className="block p-3 hover:underline">
+              <Link
+                onClick={toggleMenu}
+                href={`/${params.locale}/contact`}
+                className="block p-3 hover:underline"
+              >
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
           <div className="absolute bottom-40 left-40">
+            <div className="mb-20 text-xl">
+              <LanguageSwitcher />
+            </div>
             <Image src="/logo.png" alt="Logo" width={120} height={120} />
           </div>
         </nav>

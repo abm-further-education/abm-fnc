@@ -1,5 +1,5 @@
 'use client';
-import { inter, tinos } from '@/app/layout';
+import { inter, tinos } from '@/app/[locale]/layout';
 import Divider from '@/components/common/Divider';
 import React, { useState } from 'react';
 import MenuTab from './MenuTab';

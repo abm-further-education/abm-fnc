@@ -1,5 +1,5 @@
 'use client';
-import { tinos } from '@/app/layout';
+import { tinos } from '@/app/[locale]/layout';
 import { cn } from '@/utils/utils';
 import React from 'react';
 import Button from '../common/Button';

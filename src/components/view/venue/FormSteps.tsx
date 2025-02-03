@@ -1,5 +1,5 @@
 'use client';
-import { tinos } from '@/app/layout';
+import { tinos } from '@/app/[locale]/layout';
 import Button from '@/components/common/Button';
 import { MapPin } from 'lucide-react';
 import React from 'react';

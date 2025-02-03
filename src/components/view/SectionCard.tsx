@@ -1,4 +1,4 @@
-import { tinos } from '@/app/layout';
+import { tinos } from '@/app/[locale]/layout';
 import { cn } from '@/utils/utils';
 import Image from 'next/image';
 

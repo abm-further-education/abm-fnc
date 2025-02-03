@@ -19,8 +19,8 @@ const StepProgress: React.FC<StepProgressProps> = ({
 
         return (
           <>
-            <div className="flex items-center flex-col">
-              <div key={index} className="flex items-center">
+            <div key={index} className="flex items-center flex-col">
+              <div className="flex items-center">
                 <div
                   className={`w-30 h-30 flex items-center justify-center rounded-full border-2 ${
                     isActive

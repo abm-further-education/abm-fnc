@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/utils/utils';
-import { tinos } from '@/app/layout';
+import { tinos } from '@/app/[locale]/layout';
 
 type Props = {
   title: string;
@@ -30,7 +30,7 @@ function ImageTextSection({
       <div
         className={cn(
           order === 'left' ? 'md:order-1' : 'md:order-2',
-          'w-400 h-400 relative'
+          'w-300 h-300 md:w-400 md:h-400 relative'
         )}
       >
         <Image

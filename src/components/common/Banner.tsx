@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { montserrat, tinos } from '@/app/layout';
+import { montserrat, tinos } from '@/app/[locale]/layout';
 import Button from './Button';
 import { cn } from '@/utils/utils';
 import { useRouter } from 'next/navigation';
@@ -34,7 +34,9 @@ function Banner({ imgPath, title, content, dimmed, isNeedContactBtn }: Props) {
         >
           {title}
         </h1>
-        <p className={`${montserrat.className} text-white pb-90 text-center`}>
+        <p
+          className={`${montserrat.className} text-white pb-90 text-center px-20 md:px-0`}
+        >
           {content}
         </p>
         {isNeedContactBtn && (

@@ -1,4 +1,4 @@
-import { montserrat } from '@/app/layout';
+import { montserrat } from '@/app/[locale]/layout';
 import { cn } from '@/utils/utils';
 import Link from 'next/link';
 import React from 'react';
@@ -8,9 +8,9 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 function Footer() {
   return (
     <footer className="text-sm">
-      <div className="px-60 bg-footerBg py-20">
+      <div className="px-30 md:px-60 bg-footerBg py-20">
         <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-0 justify-between text-white">
-          <div className="w-300">
+          <div className="md:w-300">
             <Link
               className="flex items-center gap-10 font-light hover:underline"
               href="https://maps.app.goo.gl/hzYRc24WA1g8UcZU8"
@@ -20,13 +20,13 @@ function Footer() {
               Shop 22 61-79 Quay Street Haymarket NSW 2000
             </Link>
           </div>
-          <div className="w-300">
+          <div className="md:w-300">
             <span className="flex items-center md:justify-center gap-10 font-light">
               <Phone className="text-secondary" />
               +61 (02) 9160 4507
             </span>
           </div>
-          <div className="w-300">
+          <div className="md:w-300">
             <span className="flex items-center md:justify-end gap-10 font-light">
               <Mail className="text-secondary" />
               info@abm.edu.au

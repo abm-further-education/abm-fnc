@@ -2,11 +2,15 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { montserrat } from '@/app/layout';
+import { montserrat } from '@/app/[locale]/layout';
 import { cn } from '@/utils/utils';
+import { useParams } from 'next/navigation';
 import MobileNav from './MobileNav';
 
+import LanguageSwitcher from './LanguageSwitcher';
+
 function Nav() {
+  const params = useParams();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -39,13 +43,13 @@ function Nav() {
         )}
       >
         <Link
-          href="/catering"
+          href={`/${params.locale}/catering`}
           className="w-120 cursor-pointer hover:font-semibold transition-all"
         >
           Catering
         </Link>
         <Link
-          href="/venue"
+          href={`/${params.locale}/venue`}
           className="w-120 cursor-pointer hover:font-semibold transition-all"
         >
           Venue
@@ -60,17 +64,18 @@ function Nav() {
           />
         </Link>
         <Link
-          href="/about"
+          href={`/${params.locale}/about`}
           className="w-120 cursor-pointer hover:font-semibold transition-all"
         >
           About
         </Link>
         <Link
-          href="/contact"
+          href={`/${params.locale}/contact`}
           className="w-120 cursor-pointer hover:font-semibold transition-all"
         >
           Contact
         </Link>
+        <LanguageSwitcher />
       </header>
       <MobileNav />
     </>

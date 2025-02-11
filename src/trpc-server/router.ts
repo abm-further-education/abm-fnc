@@ -6,6 +6,7 @@ import { User, TUser } from '@/models/user-model';
 import dbConnect from '@/db/mongoose';
 import { contactRouter } from './routers/contact';
 import { authRouter } from './routers/auth';
+import { stripeRouter } from './routers/stripe';
 
 export const appRouter = router({
   createUser: publicProcedure
@@ -49,6 +50,7 @@ export const appRouter = router({
   }),
   contact: contactRouter,
   auth: authRouter,
+  stripe: stripeRouter,
 });
 
 export type AppRouter = typeof appRouter;

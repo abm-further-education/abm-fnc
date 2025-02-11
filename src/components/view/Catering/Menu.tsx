@@ -4,13 +4,16 @@ import Divider from '@/components/common/Divider';
 import React, { useState } from 'react';
 import MenuTab from './MenuTab';
 
-function Menu() {
+function Menu({ sectionRef }: { sectionRef: React.RefObject<HTMLDivElement> }) {
   const [selectedMenu, setSelectedMenu] = useState<
     'Package 1' | 'Package 2' | 'Package 3'
   >('Package 1');
 
   return (
-    <div className="my-40 md:my-60 px-16 md:px-0 flex flex-col justify-center items-center">
+    <div
+      className="my-40 md:my-60 px-16 md:px-0 flex flex-col justify-center items-center"
+      ref={sectionRef}
+    >
       <h2
         className={`${tinos.className} text-center text-2xl md:text-3xl text-secondary`}
       >

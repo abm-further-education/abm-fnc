@@ -4,7 +4,10 @@ import Image from 'next/image';
 import { montserrat, tinos } from '@/app/[locale]/layout';
 import Button from './Button';
 import { cn } from '@/utils/utils';
-import { useRouter } from 'next/navigation';
+
+import { useParams, useRouter } from 'next/navigation';
+import FadeInBottomToTop from './FadeInBottomToTop';
+import { useTranslations } from 'next-intl';
 
 type Props = {
   imgPath: string;
@@ -15,7 +18,11 @@ type Props = {
 };
 
 function Banner({ imgPath, title, content, dimmed, isNeedContactBtn }: Props) {
+  const params = useParams();
   const router = useRouter();
+
+  const t = useTranslations('contact');
+
   return (
     <div className="w-full h-screen md:h-700 relative">
       {dimmed && dimmed}
@@ -34,20 +41,24 @@ function Banner({ imgPath, title, content, dimmed, isNeedContactBtn }: Props) {
         >
           {title}
         </h1>
-        <p
-          className={`${montserrat.className} text-white pb-90 text-center px-20 md:px-0`}
-        >
-          {content}
-        </p>
-        {isNeedContactBtn && (
-          <Button
-            onClick={() => {
-              router.push('/contact');
-            }}
-          >
-            <span>Contact Us</span>
-          </Button>
-        )}
+        <FadeInBottomToTop>
+          <div className="flex flex-col items-center">
+            <p
+              className={`${montserrat.className} text-white pb-90 text-center px-20 md:px-0`}
+            >
+              {content}
+            </p>
+            {isNeedContactBtn && (
+              <Button
+                onClick={() => {
+                  router.push(`/${params.locale}/contact`);
+                }}
+              >
+                <span>{t('title')}</span>
+              </Button>
+            )}
+          </div>
+        </FadeInBottomToTop>
       </div>
     </div>
   );

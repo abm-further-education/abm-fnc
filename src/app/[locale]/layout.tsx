@@ -2,12 +2,12 @@ import localFont from 'next/font/local';
 import { Provider } from '@/lib/reactQuery-provider';
 import Layout from '@/components/common/Layout';
 import TopButton from '@/components/common/TopButton';
-
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Script from 'next/script';
+import { Slide, ToastContainer } from 'react-toastify';
 
 import '../globals.css';
 
@@ -49,6 +49,18 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased bg-bg`}>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          theme="dark"
+          transition={Slide}
+        />
         <NextIntlClientProvider messages={messages}>
           <Provider>
             <Layout>{children}</Layout>

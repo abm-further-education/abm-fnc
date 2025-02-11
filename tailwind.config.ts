@@ -33,6 +33,7 @@ export default {
         secondary: '#A5886D',
         bg: '#303030',
         cardBg: '#353030',
+        paymentBg: '#232222',
         darkBg: '#181818',
         footerBg: '#1e1e1e',
         inputBg: '#9C9C9C',

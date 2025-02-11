@@ -1,20 +1,30 @@
+'use client';
+
 import Banner from '@/components/common/Banner';
 import FadeIn from '@/components/common/FadeIn';
+import PaymentContainer from '@/components/common/PaymentContainer';
 import Menu from '@/components/view/Catering/Menu';
 import Contact from '@/components/view/Contact';
 import Gallery from '@/components/view/Gallery';
 import ImageTextSection from '@/components/view/ImageTextSection';
 import TestimonialContainer from '@/components/view/TestimonialContainer';
-import { Metadata } from 'next';
-import React from 'react';
+// import { Metadata } from 'next';
+import React, { useRef } from 'react';
 
-export const metadata: Metadata = {
-  title: 'ABM Further Education - Catering',
-  description:
-    'ABM Further Education provides accredited business, hospitality, and management courses to help students succeed in various industries.',
-};
+// export const metadata: Metadata = {
+//   title: 'ABM Further Education - Catering',
+//   description:
+//     'ABM Further Education provides accredited business, hospitality, and management courses to help students succeed in various industries.',
+// };
 
-function page() {
+function Page() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToSection = () => {
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div>
       <Banner
@@ -51,7 +61,7 @@ a world of sophistication and refinement."
         <TestimonialContainer className="mt-80" />
       </FadeIn>
       <FadeIn>
-        <Menu />
+        <Menu sectionRef={sectionRef} />
       </FadeIn>
       <FadeIn>
         <Contact />
@@ -59,8 +69,9 @@ a world of sophistication and refinement."
       <FadeIn>
         <Gallery />
       </FadeIn>
+      <PaymentContainer scrollToSection={scrollToSection} isCatering />
     </div>
   );
 }
 
-export default page;
+export default Page;

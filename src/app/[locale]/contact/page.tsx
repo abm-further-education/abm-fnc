@@ -1,10 +1,12 @@
 import Banner from '@/components/common/Banner';
+import Contact from '@/components/view/Contact';
 import React from 'react';
 
 function page() {
   return (
     <div>
-      <Banner imgPath="/about/about_banner.png" title="Contact Us" />
+      <Banner imgPath="/contact/contact_banner.png" title="Contact Us" />
+      <Contact />
     </div>
   );
 }

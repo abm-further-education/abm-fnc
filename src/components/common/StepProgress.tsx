@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 interface StepProgressProps {
-  steps: string[]; // 각 스텝의 이름
-  currentStep: number; // 현재 활성화된 스텝 (1-based index)
+  steps: string[];
+  eventType: string;
+  currentStep: number;
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const StepProgress: React.FC<StepProgressProps> = ({
   steps,
+  eventType,
   currentStep,
   setCurrentStep,
 }) => {
+  console.log(eventType);
   return (
     <div className="flex items-center justify-between w-full max-w-xl mx-auto my-60 px-16 md:px-0">
       {steps.map((step, index) => {
@@ -18,11 +21,11 @@ const StepProgress: React.FC<StepProgressProps> = ({
         const isCompleted = index + 1 < currentStep;
 
         return (
-          <>
-            <div key={index} className="flex items-center flex-col">
+          <Fragment key={index}>
+            <div className="flex items-center flex-col">
               <div className="flex items-center">
                 <div
-                  className={`w-30 h-30 flex items-center justify-center rounded-full border-2 ${
+                  className={`min-w-30 h-30 flex items-center justify-center rounded-full border-2 ${
                     isActive
                       ? isCompleted
                         ? 'bg-secondary border-primary'
@@ -70,7 +73,7 @@ const StepProgress: React.FC<StepProgressProps> = ({
                 }`}
               ></div>
             )}
-          </>
+          </Fragment>
         );
       })}
     </div>

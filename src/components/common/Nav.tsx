@@ -49,10 +49,10 @@ function Nav() {
           Catering
         </Link>
         <Link
-          href={`/${params.locale}/venue`}
+          href={`/${params.locale}/function`}
           className="w-120 cursor-pointer hover:font-semibold transition-all"
         >
-          Venue
+          Function
         </Link>
         <Link href="/" className="">
           <Image

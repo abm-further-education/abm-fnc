@@ -14,7 +14,17 @@ type ContactFormData = {
   message: string;
 };
 
-function Contact({ isFromSteps }: { isFromSteps?: boolean }) {
+function Contact({
+  isFromSteps,
+  eventType,
+  numbers,
+  budget,
+}: {
+  isFromSteps?: boolean;
+  eventType?: string;
+  numbers?: string;
+  budget?: string;
+}) {
   const { register, handleSubmit } = useForm<ContactFormData>();
   const sendEmailMutation = trpc.contact.sendEmail.useMutation();
 
@@ -22,7 +32,12 @@ function Contact({ isFromSteps }: { isFromSteps?: boolean }) {
     if (!data.email) alert('Please enter your email address.');
     else {
       try {
-        await sendEmailMutation.mutateAsync(data);
+        await sendEmailMutation.mutateAsync({
+          ...data,
+          eventType,
+          numbers,
+          budget,
+        });
         alert('Email sent successfully!');
       } catch (error) {
         console.error('Failed to send email:', error);

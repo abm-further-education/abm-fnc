@@ -1,5 +1,11 @@
 {
   "HomePage": {
     "bannerContent": "Onde a paixão encontra a perfeição culinária. Uma experiência inesquecível"
+  },
+  "contact": {
+    "title": "Contactar-nos"
+  },
+  "catering": {
+    "service": "A ABM Functions and Catering é especializada em proporcionar uma deliciosa variedade de experiências culinárias para uma variedade de eventos. Os nossos chefes especializados elaboram ementas que combinam criatividade e sabor, satisfazendo diversos paladares e preferências alimentares. Desde canapés elegantes a buffets fartos, os nossos serviços de catering dão um toque de magia culinária aos seus eventos."
   }
 }

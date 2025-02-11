@@ -11,6 +11,7 @@ import Banner from '@/components/common/Banner';
 import Image from 'next/image';
 import { SectionCard } from '@/components/view/SectionCard';
 import { useTranslations } from 'next-intl';
+import PaymentContainer from '@/components/common/PaymentContainer';
 
 export const metadata: Metadata = {
   title: 'ABM Further Education',
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
 
 const Page = () => {
   const t = useTranslations('HomePage');
+  const cateringT = useTranslations('catering');
 
   return (
     <div>
@@ -37,12 +39,7 @@ const Page = () => {
           order="left"
           imgPath="/home/catering_1.jpg"
           title="Catering Services"
-          content="ABM Functions and Catering specialises in providing a delectable
-            array of culinary experiences for a variety of events. Our skilled
-            chefs craft menus that blend creativity and taste, catering to
-            diverse palates and dietary preferences. From elegant canapés to
-            hearty buffet spreads, our catering services add a touch of culinary
-            magic to your events."
+          content={cateringT('service')}
         />
       </FadeIn>
       <FadeIn>
@@ -100,29 +97,34 @@ const Page = () => {
           </div>
         </section>
       </FadeIn>
-      <ImageTextSection
-        order="left"
-        imgPath="/home/our_menu.png"
-        title="Our Menu"
-        className="md:mt-290"
-        haveButton={<Button className="mt-40">View Menu</Button>}
-        content={`Are you planning a special event or gathering?\nLook no further!\n\nABM Functions and Catering is here to make your event a memorable one. As an affiliate of ABM Further Education, we take pride in providing exceptional service while also nurturing the talents and skills of our students.`}
-      />
-      <section className="mt-120">
-        <h2
-          className={cn(
-            tinos.className,
-            'text-primary text-2xl text-center mb-30'
-          )}
-        >
-          Gallery
-        </h2>
-        <Gallery />
-      </section>
+      <FadeIn>
+        <ImageTextSection
+          order="left"
+          imgPath="/home/our_menu.png"
+          title="Our Menu"
+          className="md:mt-290"
+          haveButton={<Button className="mt-40">View Menu</Button>}
+          content={`Are you planning a special event or gathering?\nLook no further!\n\nABM Functions and Catering is here to make your event a memorable one. As an affiliate of ABM Further Education, we take pride in providing exceptional service while also nurturing the talents and skills of our students.`}
+        />
+      </FadeIn>
+      <FadeIn>
+        <section className="mt-120">
+          <h2
+            className={cn(
+              tinos.className,
+              'text-primary text-2xl text-center mb-30'
+            )}
+          >
+            Gallery
+          </h2>
+          <Gallery />
+        </section>
+      </FadeIn>
       <FadeIn>
         <Contact />
       </FadeIn>
       <Testimonial />
+      <PaymentContainer />
     </div>
   );
 };

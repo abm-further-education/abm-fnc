@@ -70,13 +70,13 @@ const Gallery = () => {
           </div>
           <button
             onClick={handlePrev}
-            className="absolute top-1/2 left-2 transform -translate-y-1/2 p-2 text-white rounded-full"
+            className="absolute top-1/2 left-50 transform -translate-y-1/2 p-2 text-white rounded-full"
           >
             <ChevronLeft />
           </button>
           <button
             onClick={handleNext}
-            className="absolute top-1/2 right-2 transform -translate-y-1/2 p-2 text-white rounded-full"
+            className="absolute top-1/2 right-50 transform -translate-y-1/2 p-2 text-white rounded-full"
           >
             <ChevronRight />
           </button>

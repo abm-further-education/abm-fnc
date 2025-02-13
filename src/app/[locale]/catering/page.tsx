@@ -28,10 +28,20 @@ function Page() {
   return (
     <div>
       <Banner
-        imgPath="/home/catering_banner.png"
-        title="Event Catering"
-        content="Where Passion Meets Culinary Perfection
-An Unforgettable Experience"
+        slides={[
+          {
+            imgPath: '/home/catering_banner.png',
+            title: 'Event Catering',
+            content:
+              'Where Passion Meets Culinary Perfection An Unforgettable Experience',
+          },
+          {
+            imgPath: '/home/banner_2.png',
+            title: 'Event Catering',
+            content:
+              'Where Passion Meets Culinary Perfection An Unforgettable Experience',
+          },
+        ]}
         dimmed={
           <div className="bg-neutral-900/30 w-full h-700 absolute z-10" />
         }

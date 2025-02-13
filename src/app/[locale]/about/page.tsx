@@ -12,7 +12,14 @@ export const metadata: Metadata = {
 function page() {
   return (
     <div className="mb-40 md:mb-80">
-      <Banner imgPath="/about/about_banner.png" title="About Us" />
+      <Banner
+        slides={[
+          {
+            imgPath: '/about/about_banner.png',
+            title: 'About Us',
+          },
+        ]}
+      />
       <FadeIn>
         <ImageTextSection
           order="left"

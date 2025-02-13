@@ -20,10 +20,20 @@ function Page() {
   return (
     <div>
       <Banner
-        imgPath="/function/function_banner.png"
-        title="Function"
-        content="Where Passion Meets Culinary Perfection
-An Unforgettable Experience"
+        slides={[
+          {
+            imgPath: '/function/function_banner.png',
+            title: 'Function',
+            content:
+              'Where Passion Meets Culinary Perfection An Unforgettable Experience',
+          },
+          {
+            imgPath: '/home/banner_4.png',
+            title: 'Function',
+            content:
+              'Where Passion Meets Culinary Perfection An Unforgettable Experience',
+          },
+        ]}
         isNeedContactBtn
       />
       <FadeIn>

@@ -5,7 +5,14 @@ import React from 'react';
 function page() {
   return (
     <div>
-      <Banner imgPath="/contact/contact_banner.png" title="Contact Us" />
+      <Banner
+        slides={[
+          {
+            imgPath: '/contact/contact_banner.png',
+            title: 'Contact Us',
+          },
+        ]}
+      />
       <Contact />
     </div>
   );

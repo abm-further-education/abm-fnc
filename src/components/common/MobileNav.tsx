@@ -97,10 +97,10 @@ function MobileNav() {
             <li>
               <Link
                 onClick={toggleMenu}
-                href={`/${params.locale}/venue`}
+                href={`/${params.locale}/function`}
                 className="block p-3 hover:underline"
               >
-                Venue
+                Function
               </Link>
             </li>
             <li>

@@ -53,7 +53,7 @@ function PaymentContainer({
       {paymentStep === 1 && (
         <>
           <ArrowLeft
-            className="text-primary mt-22 cursor-pointer"
+            className="text-primary my-10 ml-10 md:ml-0 md:mt-22 cursor-pointer self-start"
             onClick={() => setPaymentStep(0)}
           />
           <div className="flex gap-10 md:flex-row flex-col">

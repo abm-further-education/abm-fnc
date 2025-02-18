@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { router, publicProcedure } from '../index';
 import Stripe from 'stripe';
+import { getBaseUrl } from '@/lib/reactQuery-provider';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-01-27.acacia',
@@ -32,8 +33,8 @@ export const stripeRouter = router({
             },
           ],
           mode: 'payment',
-          success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-          cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
+          success_url: `${getBaseUrl()}/success`,
+          cancel_url: `${getBaseUrl()}`,
         });
         console.log('✅ Stripe Session Created:', session.id, session.url);
         return { url: session.url };

@@ -8,7 +8,7 @@ import { httpBatchLink } from '@trpc/client';
 import superjson from 'superjson';
 import { trpc } from '@/trpc-client/client';
 
-const getBaseUrl = () => {
+export const getBaseUrl = () => {
   if (typeof window !== 'undefined') return ''; // Browser should use relative URL
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // Vercel auto URL
   return 'http://localhost:3000'; // Fallback for local dev

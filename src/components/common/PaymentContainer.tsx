@@ -40,7 +40,17 @@ function PaymentContainer({
       });
 
       if (response.url) {
-        window.location.href = response.url;
+        const newWindow = window.open(
+          response.url,
+          '_blank',
+          'noopener,noreferrer'
+        );
+
+        if (newWindow) {
+          newWindow.location.href = response.url; // ✅ Open in new tab safely
+        } else {
+          window.location.href = response.url; // ✅ Redirect normally if blocked
+        }
       }
     } catch (error) {
       console.error('Failed to create checkout session:', error);
@@ -63,9 +73,9 @@ function PaymentContainer({
               </label>
               <select
                 onChange={handleChange}
-                id="guest-number"
+                id="select-packages"
                 value={selectedpackage}
-                className="w-300 bg-darkBg border border-secondary text-primary text-sm focus:ring-secondary focus:border-secondary p-2.5"
+                className="w-300 h-40 bg-darkBg border border-secondary text-primary text-sm focus:ring-secondary focus:border-secondary p-2.5"
               >
                 <option value="">Select Packages</option>
                 {options.map((option, index) => (
@@ -94,7 +104,7 @@ function PaymentContainer({
       {paymentStep === 2 && (
         <>
           <ArrowLeft
-            className="text-primary mt-22 cursor-pointer"
+            className="text-primary my-10 ml-10 md:ml-0 md:mt-22 cursor-pointer self-start"
             onClick={() => setPaymentStep(1)}
           />
 

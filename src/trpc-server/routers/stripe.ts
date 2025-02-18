@@ -35,7 +35,7 @@ export const stripeRouter = router({
           success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
           cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
         });
-        console.log('✅ Stripe Session Created:', session.id);
+        console.log('✅ Stripe Session Created:', session.id, session.url);
         return { url: session.url };
       } catch (error) {
         console.error('❌ Stripe Error:', error);

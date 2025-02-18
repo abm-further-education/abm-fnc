@@ -8,7 +8,11 @@ import { httpBatchLink } from '@trpc/client';
 import superjson from 'superjson';
 import { trpc } from '@/trpc-client/client';
 
-const url = 'http://localhost:3000/api/trpc';
+const getBaseUrl = () => {
+  if (typeof window !== 'undefined') return ''; // Browser should use relative URL
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // Vercel auto URL
+  return 'http://localhost:3000'; // Fallback for local dev
+};
 
 export const Provider = ({ children }: { children: ReactNode }) => {
   const [queryClient] = useState(
@@ -25,7 +29,7 @@ export const Provider = ({ children }: { children: ReactNode }) => {
   const trpcClient = trpc.createClient({
     links: [
       httpBatchLink({
-        url: url,
+        url: `${getBaseUrl()}/api/trpc`,
         transformer: superjson,
       }),
     ],

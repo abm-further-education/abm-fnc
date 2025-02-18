@@ -33,8 +33,8 @@ export const stripeRouter = router({
             },
           ],
           mode: 'payment',
-          success_url: `${getBaseUrl()}/success`,
-          cancel_url: `${getBaseUrl()}`,
+          success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/success`,
+          cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
         });
         console.log('✅ Stripe Session Created:', session.id, session.url);
         return { url: session.url };

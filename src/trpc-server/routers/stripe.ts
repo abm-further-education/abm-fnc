@@ -5,6 +5,7 @@ import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-01-27.acacia',
 });
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
 export const stripeRouter = router({
   createCheckoutSession: publicProcedure
@@ -32,8 +33,8 @@ export const stripeRouter = router({
             },
           ],
           mode: 'payment',
-          success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/success`,
-          cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+          success_url: `${SITE_URL}/success`,
+          cancel_url: `${SITE_URL}`,
         });
         console.log('✅ Stripe Session Created:', session.id, session.url);
         return { url: session.url };

@@ -1,7 +1,6 @@
 import { z } from 'zod';
 import { router, publicProcedure } from '../index';
 import Stripe from 'stripe';
-import { getBaseUrl } from '@/lib/reactQuery-provider';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-01-27.acacia',

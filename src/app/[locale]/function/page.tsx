@@ -47,7 +47,6 @@ function Page() {
           eventType={eventType}
           currentStep={currentStep}
           budget={budget}
-          // setBudget={setBudget}
           setCurrentStep={setCurrentStep}
           setEventType={setEventType}
           setNumbers={setNumbers}

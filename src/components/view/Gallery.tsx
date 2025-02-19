@@ -37,14 +37,14 @@ const Gallery = () => {
     <div className="p-5 w-full">
       <Masonry
         breakpointCols={breakpointColumns}
-        className="flex gap-6 h-1000 overflow-hidden"
+        className="flex gap-6 h-max overflow-hidden"
         columnClassName="space-y-6"
       >
         {images.map((src, index) => (
           <div key={index} className="overflow-hidden shadow-md">
             <Image
-              width={500}
-              height={500}
+              width={300}
+              height={300}
               src={src}
               alt={`Image ${index}`}
               className="cursor-pointer object-cover w-full hover:scale-105 transition-transform duration-300"
@@ -90,13 +90,18 @@ export default Gallery;
 
 const images = [
   '/home/dreamyway_01.jpg',
-  '/home/catering_1.jpg',
+  '/home/food_7.jpeg',
   '/home/dreamyway_02.jpg',
-  '/home/catering_2.jpg',
+  '/home/food_8.jpeg',
   '/home/dreamyway_03.jpg',
-  '/home/food_1.png',
-  '/home/food_2.png',
+  '/home/food_9.jpeg',
+  '/home/food_10.jpeg',
   '/home/dreamyway_04.jpg',
   '/home/food_4.png',
   '/home/dreamyway_05.jpg',
+  '/home/food_11.jpeg',
+  '/home/food_12.jpeg',
+  '/home/food_3.png',
+  '/home/food_6.jpg',
+  '/home/food_13.png',
 ];

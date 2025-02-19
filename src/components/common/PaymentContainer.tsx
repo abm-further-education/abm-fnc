@@ -6,6 +6,8 @@ import { ArrowLeft } from 'lucide-react';
 import { toast } from 'react-toastify';
 import Dialog from './Dialog';
 import { useParams, useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import { packagesInfo } from '../view/Catering/Menu';
 
 function PaymentContainer({
   isCatering,
@@ -35,7 +37,7 @@ function PaymentContainer({
     if (!selectedpackage) return;
     try {
       const response = await createCheckoutSession.mutateAsync({
-        amount: amount * numbers,
+        amount: amount * numbers * 0.1,
         currency: 'aud',
       });
 
@@ -47,9 +49,9 @@ function PaymentContainer({
         );
 
         if (newWindow) {
-          newWindow.location.href = response.url; // ✅ Open in new tab safely
+          newWindow.location.href = response.url;
         } else {
-          window.location.href = response.url; // ✅ Redirect normally if blocked
+          window.location.href = response.url;
         }
       }
     } catch (error) {
@@ -58,7 +60,12 @@ function PaymentContainer({
   };
 
   return (
-    <div className="z-20 fixed bottom-0 items-center justify-center left-0 right-0 p-20 bg-paymentBg flex md:flex-row flex-col md:gap-40">
+    <div
+      className={cn(
+        `z-20 fixed bottom-0 items-center justify-center left-0 right-0 p-20 bg-paymentBg flex md:flex-row flex-col md:gap-40`,
+        paymentStep === 2 ? 'md:h-200' : ''
+      )}
+    >
       {!selectedpackage && <></>}
       {paymentStep === 1 && (
         <>
@@ -104,7 +111,7 @@ function PaymentContainer({
       {paymentStep === 2 && (
         <>
           <ArrowLeft
-            className="text-primary my-10 ml-10 md:ml-0 md:mt-22 cursor-pointer self-start"
+            className="text-primary my-10 md:mt-22 cursor-pointer self-start"
             onClick={() => setPaymentStep(1)}
           />
 
@@ -112,10 +119,22 @@ function PaymentContainer({
             {selectedpackage && (
               <>
                 <div className="font-semibold pb-3">{selectedpackage}</div>
-                <div className="w-full bg-neutral-600 h-1 mb-3" />
+                <span className="text-neutral-300 text-sm pb-4">
+                  {packagesInfo[selectedpackage as Packages].description}
+                </span>
+                <div className="w-full bg-neutral-600 h-1 mb-3 mt-8" />
                 <div className="text-sm">
-                  ${priceMatch[selectedpackage as Packages]} * {numbers} guests
-                  =<span className="text-lg ml-5">${amount * numbers}</span>
+                  ${priceMatch[selectedpackage as Packages]} per person *{' '}
+                  {numbers} guests =
+                  <span className="md:text-lg ml-5">
+                    ${amount * numbers} * 10% ={' '}
+                    <span className="font-semibold">
+                      ${amount * numbers * 0.1}
+                    </span>
+                  </span>
+                </div>
+                <div className="bg-neutral-950 p-10 rounded-xl mt-10 text-white text-sm md:text-base">
+                  * You only need to pay a 10% deposit for now.
                 </div>
               </>
             )}
@@ -161,9 +180,9 @@ function PaymentContainer({
 
 export default PaymentContainer;
 
-const options = ['Package 1', 'Package 2', 'Package 3'];
+const options = ['Package 1', 'Package 2', 'Package 3'] as const;
 
-type Packages = 'Package 1' | 'Package 2' | 'Package 3';
+type Packages = (typeof options)[number];
 
 const priceMatch: Record<Packages, number> = {
   'Package 1': 28,

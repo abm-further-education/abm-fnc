@@ -11,7 +11,7 @@ export const stripeRouter = router({
   createCheckoutSession: publicProcedure
     .input(
       z.object({
-        amount: z.number().min(1), // 최소 1원 이상 결제
+        amount: z.number().min(1),
         currency: z.string().default('aud'),
       })
     )

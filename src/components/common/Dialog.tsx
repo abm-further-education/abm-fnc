@@ -22,10 +22,10 @@ function DialogContainer({
     <Dialog
       open={isOpen}
       as="div"
-      className="relative z-10 focus:outline-none"
+      className="relative z-20 focus:outline-none"
       onClose={close}
     >
-      <div className="bg-neutral-900/80 fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div className="bg-neutral-900/80 px-32 fixed inset-0 z-10 w-screen overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4">
           <DialogPanel
             transition

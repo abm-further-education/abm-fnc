@@ -36,33 +36,23 @@ function Footer() {
         <div className="flex items-center justify-between py-20 flex-col md:flex-row">
           <ul className="w-300 text-secondary flex items-center justify-center gap-16">
             <li className="hover:underline">
-              <Link href="/" className="">
-                Home
-              </Link>
+              <Link href="/">Home</Link>
             </li>
             <li className="hover:underline">
-              <Link href="/catering" className="">
-                Catering
-              </Link>
+              <Link href="/catering">Catering</Link>
             </li>
             <li className="hover:underline">
-              <Link href="/venue" className="">
-                Venue
-              </Link>
+              <Link href="/venue">Venue</Link>
             </li>
             <li className="hover:underline">
-              <Link href="/about" className="">
-                About
-              </Link>
+              <Link href="/about">About</Link>
             </li>
             <li className="hover:underline">
-              <Link href="/contact" className="">
-                Contact
-              </Link>
+              <Link href="/contact">Contact</Link>
             </li>
           </ul>
           <div>
-            <Link href="/" className="">
+            <Link href="/">
               <Image
                 src="/logo.png"
                 alt="Logo"
@@ -115,7 +105,7 @@ function Footer() {
       <div
         className={cn(
           montserrat.className,
-          'bg-darkBg text-white py-20 text-center px-16 md:px-0 text-xs md:text-sm'
+          'bg-darkBg text-white py-20 text-center px-16 md:px-0 text-xs md:text-sm mb-105'
         )}
       >
         © ABM Functions and Catering

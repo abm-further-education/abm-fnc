@@ -26,6 +26,10 @@ function Banner({ slides, dimmed, isNeedContactBtn }: Props) {
 
   const t = useTranslations('contact');
 
+  const isVideo = (path: string) => {
+    return path.match(/\.(mp4|webm|ogg)$/i);
+  };
+
   return (
     <div className="w-full h-screen md:h-700 relative">
       <Swiper
@@ -40,12 +44,30 @@ function Banner({ slides, dimmed, isNeedContactBtn }: Props) {
         {slides.map((slide, index) => (
           <SwiperSlide key={index} className="relative">
             {dimmed && dimmed}
-            <Image
+            {isVideo(slide.imgPath) ? (
+              <video
+                src={slide.imgPath}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            ) : (
+              <Image
+                src={slide.imgPath}
+                alt="banner_image"
+                fill
+                className="md:object-center object-cover"
+              />
+            )}
+
+            {/* <Image
               src={slide.imgPath}
               alt="banner_image"
               fill
               className="md:object-center object-cover"
-            />
+            /> */}
             <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
               <h1
                 className={cn(

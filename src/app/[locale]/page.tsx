@@ -28,18 +28,13 @@ const Page = () => {
       <Banner
         slides={[
           {
-            imgPath: '/home/banner_1.png',
-            title: 'ABM Functions and Catering',
-            content: t('bannerContent'),
-          },
-          {
-            imgPath: '/home/banner_3.png',
+            imgPath: '/video/ABM_FNC.mp4',
             title: 'ABM Functions and Catering',
             content: t('bannerContent'),
           },
         ]}
         dimmed={
-          <div className="bg-neutral-900/20 w-full h-screen md:h-700 absolute z-10" />
+          <div className="bg-neutral-900/50 w-full h-screen md:h-700 absolute z-10" />
         }
         isNeedContactBtn
       />

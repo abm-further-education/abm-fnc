@@ -30,7 +30,7 @@ function Page() {
       <Banner
         slides={[
           {
-            imgPath: '/home/catering_banner.png',
+            imgPath: '/video/food_13.mp4',
             title: 'Event Catering',
             content:
               'Where Passion Meets Culinary Perfection An Unforgettable Experience',
@@ -50,7 +50,7 @@ function Page() {
       <FadeIn>
         <ImageTextSection
           order="left"
-          imgPath="/catering/catering_01.png"
+          imgPath="/home/food_8.jpeg"
           title="Fresh bespoke menu offerings"
           content="Beyond its gastronomic prowess, ABM FNC has always
 been synonymous with luxury. The restaurant's ambiance,

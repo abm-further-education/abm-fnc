@@ -15,7 +15,7 @@ const StepProgress: React.FC<StepProgressProps> = ({
 }) => {
   console.log(eventType);
   return (
-    <div className="flex items-center justify-between w-full max-w-xl mx-auto my-60 px-16 md:px-0">
+    <div className="flex items-center justify-between w-full max-w-max mx-auto my-60 px-16 md:px-0">
       {steps.map((step, index) => {
         const isActive = index + 1 <= currentStep;
         const isCompleted = index + 1 < currentStep;

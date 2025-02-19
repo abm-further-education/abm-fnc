@@ -256,7 +256,7 @@ function Menu({ sectionRef }: { sectionRef: React.RefObject<HTMLDivElement> }) {
 
 export default Menu;
 
-const packagesInfo: {
+export const packagesInfo: {
   [key in 'Package 1' | 'Package 2' | 'Package 3']: {
     price: number;
     description: string;

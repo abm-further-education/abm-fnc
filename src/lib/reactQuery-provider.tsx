@@ -9,9 +9,9 @@ import superjson from 'superjson';
 import { trpc } from '@/trpc-client/client';
 
 export const getBaseUrl = () => {
-  if (typeof window !== 'undefined') return ''; // Browser should use relative URL
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // Vercel auto URL
-  return 'http://localhost:3000'; // Fallback for local dev
+  if (typeof window !== 'undefined') return '';
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return 'http://localhost:3000';
 };
 
 export const Provider = ({ children }: { children: ReactNode }) => {

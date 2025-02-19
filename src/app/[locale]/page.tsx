@@ -14,9 +14,9 @@ import { useTranslations } from 'next-intl';
 import PaymentContainer from '@/components/common/PaymentContainer';
 
 export const metadata: Metadata = {
-  title: 'ABM Further Education',
+  title: 'ABM FNC',
   description:
-    'ABM Further Education provides accredited business, hospitality, and management courses to help students succeed in various industries.',
+    'Where Passion Meets Culinary Perfection An Unforgettable Experience',
 };
 
 const Page = () => {

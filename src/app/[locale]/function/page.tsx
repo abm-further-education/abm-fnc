@@ -9,7 +9,6 @@ import FormSteps from '@/components/view/Function/FormSteps';
 import React, { useState } from 'react';
 import { tinos } from '../layout';
 import Divider from '@/components/common/Divider';
-import PaymentContainer from '@/components/common/PaymentContainer';
 
 function Page() {
   const [currentStep, setCurrentStep] = useState(1);

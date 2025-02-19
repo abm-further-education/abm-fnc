@@ -93,7 +93,6 @@ function Page() {
       <FadeIn>
         <Contact eventType={eventType} numbers={numbers} budget={budget} />
       </FadeIn>
-      <PaymentContainer />
     </div>
   );
 }

@@ -6,6 +6,8 @@ import Button from '../common/Button';
 import Divider from '../common/Divider';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { trpc } from '@/trpc-client/client';
+import { toast } from 'react-toastify';
+import PaymentContainer from '../common/PaymentContainer';
 
 type ContactFormData = {
   name: string;
@@ -38,10 +40,10 @@ function Contact({
           numbers,
           budget,
         });
-        alert('Email sent successfully!');
+        toast.success('Email sent successfully!');
       } catch (error) {
         console.error('Failed to send email:', error);
-        alert('Failed to send email. Please try again.');
+        toast.error('Failed to send email. Please try again.');
       }
     }
   };
@@ -92,6 +94,7 @@ function Contact({
           Send a Message
         </Button>
       </form>
+      <PaymentContainer />
     </section>
   );
 }

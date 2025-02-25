@@ -129,7 +129,7 @@ function PaymentContainer({
                   <span className="md:text-lg ml-5">
                     ${amount * numbers} * 10% ={' '}
                     <span className="font-semibold">
-                      ${amount * numbers * 0.1}
+                      ${(amount * numbers * 0.1).toFixed(2)}
                     </span>
                   </span>
                 </div>

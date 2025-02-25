@@ -112,7 +112,7 @@ function Menu({ sectionRef }: { sectionRef: React.RefObject<HTMLDivElement> }) {
             $5 per item
           </p>
           <ul className="text-white/90 mt-16">
-            {menus.substantial.map((item, index) => {
+            {menus.dessert.map((item, index) => {
               return (
                 <li
                   className={`${inter.className} max-w-270 text-sm gap-10 flex mb-5`}

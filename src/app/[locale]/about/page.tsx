@@ -1,6 +1,6 @@
 import Banner from '@/components/common/Banner';
 import FadeIn from '@/components/common/FadeIn';
-// import PaymentContainer from '@/components/common/PaymentContainer';
+import PaymentContainer from '@/components/common/PaymentContainer';
 import ImageTextSection from '@/components/view/ImageTextSection';
 import { Metadata } from 'next';
 import React from 'react';
@@ -47,7 +47,7 @@ function page() {
           content="Your event should reflect your unique vision and style. At ABM Functions and Catering, we believe in turning your dreams into reality. Whether you’re hosting a wedding reception, a corporate gala, or an intimate birthday party, our team will work closely with you to understand your preferences and execute them flawlessly."
         />
       </FadeIn>
-      {/* <PaymentContainer /> */}
+      <PaymentContainer />
     </div>
   );
 }

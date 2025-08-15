@@ -2,7 +2,7 @@
 
 import Banner from '@/components/common/Banner';
 import FadeIn from '@/components/common/FadeIn';
-// import PaymentContainer from '@/components/common/PaymentContainer';
+import PaymentContainer from '@/components/common/PaymentContainer';
 import Menu from '@/components/view/Catering/Menu';
 import Contact from '@/components/view/Contact';
 import Gallery from '@/components/view/Gallery';
@@ -20,11 +20,11 @@ import React, { useRef } from 'react';
 function Page() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // const scrollToSection = () => {
-  //   if (sectionRef.current) {
-  //     sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-  //   }
-  // };
+  const scrollToSection = () => {
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div>
       <Banner
@@ -79,7 +79,7 @@ a world of sophistication and refinement."
       <FadeIn>
         <Gallery />
       </FadeIn>
-      {/* <PaymentContainer scrollToSection={scrollToSection} isCatering /> */}
+      <PaymentContainer scrollToSection={scrollToSection} isCatering />
     </div>
   );
 }

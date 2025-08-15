@@ -82,7 +82,7 @@ export default function SuccessPage() {
             </div>
           ) : (
             <div className="text-yellow-400 text-sm">
-              ⚠️ We&lsquo;re processing your confirmation email.
+              ⚠️ We&apos;re processing your confirmation email.
             </div>
           )}
         </div>

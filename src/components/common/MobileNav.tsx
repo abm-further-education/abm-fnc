@@ -47,7 +47,7 @@ function MobileNav() {
     <div
       className={cn(
         montserrat.className,
-        `fixed top-0 z-[999] md:hidden flex items-center justify-between text-black p-16 w-full`
+        `fixed top-0 z-[999] md:hidden flex items-center justify-between text-white p-16 w-full`
       )}
     >
       <Link href="/" className="">
@@ -59,7 +59,7 @@ function MobileNav() {
           className="mx-20"
         />
       </Link>
-      <AlignJustify onClick={toggleMenu} />
+      <AlignJustify onClick={toggleMenu} className="text-white" />
 
       <div
         className={`fixed top-0 z-[999] right-0 h-full w-full p-40  shadow-lg transform transition-transform duration-300 ${

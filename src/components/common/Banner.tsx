@@ -31,7 +31,7 @@ function Banner({ slides, dimmed, isNeedContactBtn }: Props) {
   };
 
   return (
-    <div className="w-full h-screen md:h-700 relative">
+    <div className="w-full h-500 md:h-700 relative">
       <Swiper
         navigation
         modules={[Navigation, Autoplay, Pagination, Scrollbar]}

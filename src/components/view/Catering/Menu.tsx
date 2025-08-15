@@ -21,7 +21,7 @@ function Menu({ sectionRef }: { sectionRef: React.RefObject<HTMLDivElement> }) {
       </h2>
       <Divider />
       <p
-        className={`${inter.className} text-sm md:text-base max-w-700 text-center text-white/80 mx-auto my-20`}
+        className={`${inter.className} text-xs md:text-base max-w-700 text-center text-white/80 mx-auto my-20`}
       >
         The events catering Menu is designed to extend ABM Kitchen Management
         Students, to gain experience in their profession. The following menu is
@@ -134,7 +134,7 @@ function Menu({ sectionRef }: { sectionRef: React.RefObject<HTMLDivElement> }) {
           $30 per item
         </p>
         <p
-          className={`${inter.className} text-sm md:text-base max-w-700 text-center text-white/80 mx-auto my-20`}
+          className={`${inter.className} text-xs md:text-base max-w-700 text-center text-white/80 mx-auto my-20`}
         >
           Includes a combined selection of sweet and savoury items.
         </p>

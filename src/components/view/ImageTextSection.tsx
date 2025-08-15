@@ -45,7 +45,11 @@ function ImageTextSection({
         className={cn(order === 'right' ? 'order-1' : 'order-2', 'max-w-450')}
       >
         <h2 className={cn(tinos.className, 'text-xl text-primary')}>{title}</h2>
-        <p className={cn('text-white text-sm mt-20 whitespace-pre-wrap')}>
+        <p
+          className={cn(
+            'text-white text-xs md:text-sm mt-20 whitespace-pre-wrap'
+          )}
+        >
           {content}
         </p>
         {haveButton && haveButton}

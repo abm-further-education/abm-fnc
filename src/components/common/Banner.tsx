@@ -11,8 +11,8 @@ import { useTranslations } from 'next-intl';
 import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import 'swiper/css';
-import 'swiper/css/autoplay';
+// import 'swiper/css';
+// import 'swiper/css/autoplay';
 
 type Props = {
   slides: { imgPath: string; title: string; content?: string }[];

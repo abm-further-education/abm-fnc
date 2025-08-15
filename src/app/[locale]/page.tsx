@@ -11,7 +11,7 @@ import Banner from '@/components/common/Banner';
 import Image from 'next/image';
 import { SectionCard } from '@/components/view/SectionCard';
 import { useTranslations } from 'next-intl';
-import PaymentContainer from '@/components/common/PaymentContainer';
+// import PaymentContainer from '@/components/common/PaymentContainer';
 
 export const metadata: Metadata = {
   title: 'ABM FNC',
@@ -128,7 +128,7 @@ const Page = () => {
         <Contact />
       </FadeIn>
       <Testimonial />
-      <PaymentContainer />
+      {/* <PaymentContainer /> */}
     </div>
   );
 };

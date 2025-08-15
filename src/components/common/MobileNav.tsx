@@ -47,7 +47,7 @@ function MobileNav() {
     <div
       className={cn(
         montserrat.className,
-        `fixed top-0 z-[999] md:hidden flex items-center justify-between text-white p-16 w-full`
+        `fixed top-0 z-[999] md:hidden flex items-center justify-between text-black p-16 w-full`
       )}
     >
       <Link href="/" className="">

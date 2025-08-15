@@ -31,11 +31,13 @@ export const montserrat = localFont({
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+
   if (
     !routing.locales.includes(
       locale as 'en' | 'ko' | 'sp' | 'jp' | 'fr' | 'th' | 'pt'

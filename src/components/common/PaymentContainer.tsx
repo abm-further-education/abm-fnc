@@ -7,7 +7,15 @@ import { toast } from 'react-toastify';
 import Dialog from './Dialog';
 import { useParams, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { packagesInfo } from '../view/Catering/Menu';
+// import { packagesInfo } from '../view/Catering/Menu';
+
+// 사용자 정보 타입 정의
+interface UserInfo {
+  name: string;
+  email: string;
+  phone: string;
+  additionalRequest: string;
+}
 
 function PaymentContainer({
   isCatering,
@@ -24,6 +32,14 @@ function PaymentContainer({
   const [numbers, setNumbers] = React.useState(0);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = React.useState(false);
 
+  // 사용자 정보 상태 추가
+  const [userInfo, setUserInfo] = React.useState<UserInfo>({
+    name: '',
+    email: '',
+    phone: '',
+    additionalRequest: '',
+  });
+
   const createCheckoutSession = trpc.stripe.createCheckoutSession.useMutation();
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -33,12 +49,31 @@ function PaymentContainer({
     setAmount(priceMatch[value as Packages]);
   };
 
+  const handleUserInfoChange = (field: keyof UserInfo, value: string) => {
+    setUserInfo((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
   const purchasePackage = async () => {
-    if (!selectedpackage) return;
+    if (
+      !selectedpackage ||
+      !userInfo.name ||
+      !userInfo.email ||
+      !userInfo.phone
+    )
+      return;
     try {
       const response = await createCheckoutSession.mutateAsync({
         amount: amount * numbers * 0.1,
         currency: 'aud',
+        userInfo: {
+          ...userInfo,
+          packageName: selectedpackage,
+          numberOfGuests: numbers,
+          totalAmount: amount * numbers * 0.1,
+        },
       });
 
       if (response.url) {
@@ -59,14 +94,32 @@ function PaymentContainer({
     }
   };
 
+  const validateUserInfo = () => {
+    if (!userInfo.name) {
+      toast.warning('Please enter your name');
+      return false;
+    }
+    if (!userInfo.email) {
+      toast.warning('Please enter your email');
+      return false;
+    }
+    if (!userInfo.phone) {
+      toast.warning('Please enter your phone number');
+      return false;
+    }
+    return true;
+  };
+
   return (
     <div
       className={cn(
         `z-20 fixed bottom-0 items-center justify-center left-0 right-0 p-20 bg-paymentBg flex md:flex-row flex-col md:gap-40`,
-        paymentStep === 2 ? 'md:h-200' : ''
+        paymentStep === 2 || paymentStep === 3 ? 'md:h-200' : ''
       )}
     >
       {!selectedpackage && <></>}
+
+      {/* Step 1: Package Selection */}
       {paymentStep === 1 && (
         <>
           <ArrowLeft
@@ -108,41 +161,124 @@ function PaymentContainer({
         </>
       )}
 
+      {/* Step 2: User Information */}
       {paymentStep === 2 && (
         <>
           <ArrowLeft
-            className="text-primary my-10 md:mt-22 cursor-pointer self-start"
+            className="text-primary my-10 ml-10 md:ml-0 md:mt-22 cursor-pointer self-start"
             onClick={() => setPaymentStep(1)}
           />
-
-          <div className="text-primary">
-            {selectedpackage && (
-              <>
-                <div className="font-semibold pb-3">{selectedpackage}</div>
-                <span className="text-neutral-300 text-sm pb-4">
-                  {packagesInfo[selectedpackage as Packages].description}
-                </span>
-                <div className="w-full bg-neutral-600 h-1 mb-3 mt-8" />
-                <div className="text-sm">
-                  ${priceMatch[selectedpackage as Packages]} per person *{' '}
-                  {numbers} guests =
-                  <span className="md:text-lg ml-5">
-                    ${amount * numbers} * 10% ={' '}
-                    <span className="font-semibold">
-                      ${(amount * numbers * 0.1).toFixed(2)}
-                    </span>
-                  </span>
-                </div>
-                <div className="bg-neutral-950 p-10 rounded-xl mt-10 text-white text-sm md:text-base">
-                  * You only need to pay a 10% deposit for now.
-                </div>
-              </>
-            )}
+          <div className="flex gap-10 md:flex-row flex-col w-full max-w-800">
+            <div className="flex flex-col gap-4 flex-1">
+              <div className="flex flex-col">
+                <label className="text-sm text-primary mb-2">Name *</label>
+                <input
+                  type="text"
+                  value={userInfo.name}
+                  onChange={(e) => handleUserInfoChange('name', e.target.value)}
+                  className="w-full h-40 bg-darkBg border border-secondary text-primary text-sm focus:ring-secondary focus:border-secondary p-2.5"
+                  placeholder="Enter your full name"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm text-primary mb-2">Email *</label>
+                <input
+                  type="email"
+                  value={userInfo.email}
+                  onChange={(e) =>
+                    handleUserInfoChange('email', e.target.value)
+                  }
+                  className="w-full h-40 bg-darkBg border border-secondary text-primary text-sm focus:ring-secondary focus:border-secondary p-2.5"
+                  placeholder="Enter your email address"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col gap-4 flex-1">
+              <div className="flex flex-col">
+                <label className="text-sm text-primary mb-2">
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  value={userInfo.phone}
+                  onChange={(e) =>
+                    handleUserInfoChange('phone', e.target.value)
+                  }
+                  className="w-full h-40 bg-darkBg border border-secondary text-primary text-sm focus:ring-secondary focus:border-secondary p-2.5"
+                  placeholder="Enter your phone number"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-sm text-primary mb-2">
+                  Additional Requests
+                </label>
+                <textarea
+                  value={userInfo.additionalRequest}
+                  onChange={(e) =>
+                    handleUserInfoChange('additionalRequest', e.target.value)
+                  }
+                  className="w-full h-20 bg-darkBg border border-secondary text-primary text-sm focus:ring-secondary focus:border-secondary p-2.5 resize-none"
+                  placeholder="Any special requests or dietary requirements?"
+                />
+              </div>
+            </div>
           </div>
         </>
       )}
+
+      {/* Step 3: Payment Summary */}
+      {paymentStep === 3 && (
+        <>
+          <ArrowLeft
+            className="text-primary my-10 ml-10 md:ml-0 md:mt-22 cursor-pointer self-start"
+            onClick={() => setPaymentStep(2)}
+          />
+          <div className="flex flex-col gap-4 w-full max-w-600">
+            <h3 className="text-primary text-lg font-semibold">
+              Order Summary
+            </h3>
+            <div className="bg-darkBg border border-secondary p-4 rounded text-primary">
+              <div className="flex justify-between mb-2">
+                <span>Package:</span>
+                <span>{selectedpackage}</span>
+              </div>
+              <div className="flex justify-between mb-2">
+                <span>Number of Guests:</span>
+                <span>{numbers}</span>
+              </div>
+              <div className="flex justify-between mb-2">
+                <span>Name:</span>
+                <span>{userInfo.name}</span>
+              </div>
+              <div className="flex justify-between mb-2">
+                <span>Email:</span>
+                <span>{userInfo.email}</span>
+              </div>
+              <div className="flex justify-between mb-2">
+                <span>Phone:</span>
+                <span>{userInfo.phone}</span>
+              </div>
+              {userInfo.additionalRequest && (
+                <div className="flex justify-between mb-2">
+                  <span>Additional Requests:</span>
+                  <span className="text-right max-w-300">
+                    {userInfo.additionalRequest}
+                  </span>
+                </div>
+              )}
+              <div className="border-t border-secondary pt-2 mt-2">
+                <div className="flex justify-between font-semibold">
+                  <span>Total Amount:</span>
+                  <span>AUD ${(amount * numbers * 0.1).toFixed(2)}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
       <Button
-        id="Seated Dining"
+        id="payment-button"
         className="w-160 h-42 items-center flex justify-center mt-22"
         onClick={() => {
           if (paymentStep === 0) {
@@ -158,12 +294,24 @@ function PaymentContainer({
             }
           }
           if (paymentStep === 2) {
+            if (validateUserInfo()) {
+              setPaymentStep(paymentStep + 1);
+            }
+          }
+          if (paymentStep === 3) {
             setIsConfirmModalOpen(true);
           }
         }}
       >
-        <span>{paymentStep > 0 ? 'Continue to order' : 'Start Planning'}</span>
+        <span>
+          {paymentStep === 0
+            ? 'Start Planning'
+            : paymentStep === 3
+            ? 'Proceed to Payment'
+            : 'Continue to order'}
+        </span>
       </Button>
+
       {isConfirmModalOpen && (
         <Dialog
           isOpen={isConfirmModalOpen}

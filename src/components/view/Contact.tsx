@@ -7,7 +7,7 @@ import Divider from '../common/Divider';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { trpc } from '@/trpc-client/client';
 import { toast } from 'react-toastify';
-import PaymentContainer from '../common/PaymentContainer';
+// import PaymentContainer from '../common/PaymentContainer';
 
 type ContactFormData = {
   name: string;
@@ -94,7 +94,7 @@ function Contact({
           Send a Message
         </Button>
       </form>
-      <PaymentContainer />
+      {/* <PaymentContainer /> */}
     </section>
   );
 }
